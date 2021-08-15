@@ -77,6 +77,7 @@ class RoverControllerTest extends TestCase
         ])->assertJsonFragment([
             'id' => $id,
             'plateau_id' => $plateauId,
+            'direction' => DIRECTION_NORTH,
             'current_x' => 2,
             'current_y' => 2,
         ]);

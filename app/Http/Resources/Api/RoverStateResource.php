@@ -22,6 +22,7 @@ class RoverStateResource extends JsonResource
         return [
             'id' => $this->getId(),
             'plateau_id' => $this->getPlateauId(),
+            'direction' => $this->getDirection(),
             'current_x' => $this->getCurrentX(),
             'current_y' => $this->getCurrentY(),
         ];
