@@ -5,7 +5,6 @@ namespace Tests\Unit\MemoryModels;
 use App\Coordinate;
 use App\MemoryModels\Plateau;
 use Exception;
-use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class PlateauTest extends TestCase
