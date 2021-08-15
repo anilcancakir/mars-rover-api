@@ -5,8 +5,6 @@ namespace Tests\Unit\MemoryModels;
 use App\Coordinate;
 use App\MemoryModels\Plateau;
 use Exception;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 

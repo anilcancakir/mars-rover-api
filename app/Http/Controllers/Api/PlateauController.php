@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Plateau\StoreRequest;
 use App\Http\Resources\Api\PlateauResource;
 use App\MemoryModels\Plateau;
-use Illuminate\Http\Request;
 
 class PlateauController extends Controller
 {
@@ -28,6 +27,5 @@ class PlateauController extends Controller
 
     public function show(string $id)
     {
-
     }
 }
