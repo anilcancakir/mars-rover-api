@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use App\Mover;
-use Tests\TestCase;
 use Exception;
+use Tests\TestCase;
 
 class MoverTest extends TestCase
 {
