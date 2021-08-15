@@ -1,5 +1,5 @@
 # Mars Rover API
-<a href="https://travis-ci.org/anilcancakir/mars-rover-api"><img src="https://travis-ci.org/anilcancakir/mars-rover-api.svg" alt="Build Status"></a>
+<a href="https://www.travis-ci.com/github/anilcancakir/mars-rover-api"><img src="https://api.travis-ci.com/anilcancakir/mars-rover-api.svg?branch=master" alt="Build Status"></a>
 <a href="https://github.styleci.io/repos/396462191"><img src="https://github.styleci.io/repos/396462191/shield?style=flat&branch=master" alt="Coding Style Status"></a>
 
 This project is simulating the Rover on Mars. 
