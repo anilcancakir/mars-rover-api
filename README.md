@@ -1,6 +1,6 @@
-<p align="center" style="text-align: center; font-size: xxx-large; font-weight: bold;">
+<h1 align="center" style="text-align: center; font-size: xxx-large; font-weight: bold;">
 Mars Rover API
-</p>
+</h1>
 
 <p align="center" style="text-align: center;">
 <a href="https://travis-ci.org/anilcancakir/mars-rover-api"><img src="https://travis-ci.org/anilcancakir/mars-rover-api.svg" alt="Build Status"></a>
