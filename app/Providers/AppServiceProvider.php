@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!$this->app->runningInConsole() and !Redis::connection()->client()->isConnected()) {
+        if (! $this->app->runningInConsole() and ! Redis::connection()->client()->isConnected()) {
             throw new Exception('Redis connection must be available for the Project.');
         }
     }
