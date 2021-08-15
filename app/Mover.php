@@ -106,7 +106,6 @@ class Mover
         return $this;
     }
 
-
     /**
      * Execute a move command.
      *
@@ -115,7 +114,7 @@ class Mover
      */
     public function commandMove(): Mover
     {
-        list($x, $y) = self::move(
+        [$x, $y] = self::move(
             $this->roverX,
             $this->roverY,
             $this->roverDirection,
