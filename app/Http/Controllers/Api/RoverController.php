@@ -46,7 +46,7 @@ class RoverController extends Controller
      */
     public function show(string $id): RoverResource
     {
-        if (!$rover = Rover::find($id)) {
+        if (! $rover = Rover::find($id)) {
             abort(404);
         }
 
