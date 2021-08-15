@@ -2,8 +2,9 @@
 
 namespace Tests\Feature\Http\Controllers\Api;
 
+use App\Coordinate;
+use App\MemoryModels\Plateau;
 use Exception;
-use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class PlateauControllerTest extends TestCase
@@ -14,16 +15,39 @@ class PlateauControllerTest extends TestCase
      */
     public function test_can_store()
     {
-        $name = Str::random();
         $maxX = random_int(1, 100);
         $maxY = random_int(1, 100);
 
         $this->post('api/plateaus/create', [
-            'name' => $name,
             'x' => $maxX,
             'y' => $maxY,
         ])->assertJsonFragment([
-            'name' => $name,
+            'min_coordinate' => [
+                'x' => 0,
+                'y' => 0,
+            ],
+            'max_coordinate' => [
+                'x' => $maxX,
+                'y' => $maxY,
+            ],
+        ]);
+    }
+
+    /**
+     * @test
+     * @throws Exception
+     */
+    public function test_can_show()
+    {
+        $id = random_int(1, 1000);
+        $maxX = random_int(1, 100);
+        $maxY = random_int(1, 100);
+
+        $plateau = new Plateau($id, new Coordinate($maxX, $maxY));
+        $plateau->save();
+
+        $this->get("api/plateaus/$id")->assertJsonFragment([
+            'id' => $id,
             'min_coordinate' => [
                 'x' => 0,
                 'y' => 0,

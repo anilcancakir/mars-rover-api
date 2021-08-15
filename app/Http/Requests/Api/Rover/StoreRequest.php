@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Api\Plateau;
+namespace App\Http\Requests\Api\Rover;
 
+use App\Rules\DirectionRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -24,8 +25,10 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'x' => ['nullable', 'int', 'min:1'],
-            'y' => ['nullable', 'int', 'min:1'],
+            'plateau_id' => ['required', 'int'],
+            'direction' => ['required', new DirectionRule],
+            'x' => ['nullable', 'int', 'min:0'],
+            'y' => ['nullable', 'int', 'min:0'],
         ];
     }
 }

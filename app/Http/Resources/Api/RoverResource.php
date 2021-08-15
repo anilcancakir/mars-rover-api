@@ -2,14 +2,14 @@
 
 namespace App\Http\Resources\Api;
 
-use App\MemoryModels\Plateau;
+use App\MemoryModels\Rover;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin Plateau
+ * @mixin Rover
  */
-class PlateauResource extends JsonResource
+class RoverResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,14 +21,8 @@ class PlateauResource extends JsonResource
     {
         return [
             'id' => $this->getId(),
-            'min_coordinate' => [
-                'x' => $this->getMinX(),
-                'y' => $this->getMinY(),
-            ],
-            'max_coordinate' => [
-                'x' => $this->getMaxX(),
-                'y' => $this->getMaxY(),
-            ],
+            'plateau_id' => $this->getPlateauId(),
+            'direction' => $this->getDirection(),
         ];
     }
 }

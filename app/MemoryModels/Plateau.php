@@ -12,12 +12,12 @@ class Plateau extends BaseMemoryModel
     protected Coordinate $maxCoordinate;
 
     /**
-     * @param string $name
+     * @param int $id
      * @param ?Coordinate $maxCoordinate
      */
-    public function __construct(string $name, Coordinate $maxCoordinate = null)
+    public function __construct(int $id, Coordinate $maxCoordinate = null)
     {
-        $this->id = $name;
+        $this->id = $id;
         $this->maxCoordinate = $maxCoordinate ?: new Coordinate;
     }
 

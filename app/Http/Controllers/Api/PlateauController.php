@@ -7,13 +7,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Plateau\StoreRequest;
 use App\Http\Resources\Api\PlateauResource;
 use App\MemoryModels\Plateau;
+use Exception;
 
 class PlateauController extends Controller
 {
-    public function store(StoreRequest $request)
+    /**
+     * Store the given plateau.
+     *
+     * @param StoreRequest $request
+     * @return PlateauResource
+     * @throws Exception
+     */
+    public function store(StoreRequest $request): PlateauResource
     {
         $plateau = new Plateau(
-            $request->get('name'),
+            random_int(1, 1000),
             new Coordinate(
                 $request->get('x'),
                 $request->get('y'),
@@ -25,7 +33,18 @@ class PlateauController extends Controller
         return new PlateauResource($plateau);
     }
 
-    public function show(string $id)
+    /**
+     * Show the given plateau.
+     *
+     * @param string $id
+     * @return PlateauResource
+     */
+    public function show(string $id): PlateauResource
     {
+        if (! $plateau = Plateau::find($id)) {
+            abort(404);
+        }
+
+        return new PlateauResource($plateau);
     }
 }

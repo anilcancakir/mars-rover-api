@@ -2,16 +2,18 @@
 
 namespace App\MemoryModels;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Redis;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 abstract class BaseMemoryModel
 {
     /**
      * ID of the model.
      *
-     * @var string
+     * @var int
      */
-    protected string $id;
+    protected int $id;
 
     /**
      * Save the given model.
@@ -29,9 +31,9 @@ abstract class BaseMemoryModel
     /**
      * Get the ID of the model.
      *
-     * @return string
+     * @return int
      */
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }
@@ -39,9 +41,9 @@ abstract class BaseMemoryModel
     /**
      * Set the ID of the model.
      *
-     * @param string $id
+     * @param int $id
      */
-    public function setId(string $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -63,12 +65,30 @@ abstract class BaseMemoryModel
     }
 
     /**
-     * Get the key of the model.
+     * Find or fail the model by given id.
      *
      * @param string $id
+     * @return BaseMemoryModel
+     */
+    public static function findOrFail(string $id): BaseMemoryModel
+    {
+        if (! $model = self::find($id)) {
+            throw new NotFoundHttpException(
+                get_called_class() . ' not found with ' . $id
+            );
+        }
+
+        return $model;
+
+    }
+
+    /**
+     * Get the key of the model.
+     *
+     * @param int $id
      * @return string
      */
-    protected static function getKey(string $id): string
+    protected static function getKey(int $id): string
     {
         return basename(get_called_class()).':'.md5($id);
     }

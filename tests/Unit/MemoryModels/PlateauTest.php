@@ -16,14 +16,14 @@ class PlateauTest extends TestCase
      */
     public function test_can_create_and_save()
     {
-        $name = Str::random();
+        $id = random_int(1, 1000);
         $x = random_int(1, 100);
         $y = random_int(1, 100);
 
-        $plateau = new Plateau($name, new Coordinate($x, $y));
+        $plateau = new Plateau($id, new Coordinate($x, $y));
         $plateau->save();
 
-        $findPlateau = Plateau::find($name);
+        $findPlateau = Plateau::find($id);
 
         $this->assertSame(
             $plateau->getId(),
