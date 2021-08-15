@@ -52,7 +52,7 @@ abstract class BaseMemoryModel
      * @param string $id
      * @return BaseMemoryModel|null
      */
-    public static function find(string $id) : ?BaseMemoryModel
+    public static function find(string $id): ?BaseMemoryModel
     {
         $key = self::getKey($id);
         if ($value = Redis::connection()->client()->get($key)) {
@@ -76,18 +76,18 @@ abstract class BaseMemoryModel
     /**
      * Serialize the value.
      *
-     * @param  mixed  $value
-     * @return string|int
+     * @param mixed $value
+     * @return mixed
      */
-    protected static function serialize(mixed $value): string|int
+    protected static function serialize(mixed $value): mixed
     {
-        return is_numeric($value) && ! in_array($value, [INF, -INF]) && ! is_nan($value) ? $value : serialize($value);
+        return is_numeric($value) && !in_array($value, [INF, -INF]) && !is_nan($value) ? $value : serialize($value);
     }
 
     /**
      * Unserialize the value.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return mixed
      */
     protected static function unserialize(mixed $value): mixed
