@@ -17,10 +17,10 @@ class BaseMemoryModelTest extends TestCase
         $model->save();
 
         $className = class_basename($model);
-        $key = $className . ':' . md5($id);
+        $key = $className.':'.md5($id);
 
         $this->assertTrue(
-            !!Redis::connection()->client()->exists($key)
+            (bool) Redis::connection()->client()->exists($key)
         );
     }
 
@@ -34,7 +34,7 @@ class BaseMemoryModelTest extends TestCase
 
         /** @var BaseMemoryModel $findModel */
         $findModel = call_user_func([
-            $model, 'find'
+            $model, 'find',
         ], $id);
 
         $this->assertSame(
