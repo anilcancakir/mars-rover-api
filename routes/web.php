@@ -14,13 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    foreach (str_split('MAFAS', 1) as $char) {
-        dd($char);
-    }
-
-    $t = \App\MemoryModels\Plateau::find('Anılcan ın güzel platüsü');
-    dd($t);
-
-    $plateau = new \App\MemoryModels\Plateau('Anılcan ın güzel platüsü', new \App\Coordinate(10, 20));
-    dd($plateau->save());
+    return redirect()->to(
+        'https://app.swaggerhub.com/apis/anilcancakir/mars-rover-api/1.0.0'
+    );
 });
