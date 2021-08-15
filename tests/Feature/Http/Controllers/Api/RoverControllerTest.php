@@ -73,7 +73,7 @@ class RoverControllerTest extends TestCase
         $rover->save();
 
         $this->post("api/rovers/$id/command", [
-            'commands' => 'MLM'
+            'commands' => 'MLM',
         ])->assertJsonFragment([
             'id' => $id,
             'plateau_id' => $plateauId,
