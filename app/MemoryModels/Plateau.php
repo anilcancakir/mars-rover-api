@@ -22,6 +22,26 @@ class Plateau extends BaseMemoryModel
     }
 
     /**
+     * Get the min X value.
+     *
+     * @return int
+     */
+    public function getMinX(): int
+    {
+        return 0;
+    }
+
+    /**
+     * Get the min Y value.
+     *
+     * @return int
+     */
+    public function getMinY(): int
+    {
+        return 0;
+    }
+
+    /**
      * Get the max X value.
      *
      * @return int
