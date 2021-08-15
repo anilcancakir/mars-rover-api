@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Coordinate;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Rover\CommandController;
 use App\Http\Requests\Api\Rover\StoreRequest;
 use App\Http\Resources\Api\RoverResource;
+use App\Http\Resources\Api\RoverStateResource;
 use App\MemoryModels\Rover;
+use App\Mover;
 use Exception;
 
 class RoverController extends Controller
@@ -43,10 +46,56 @@ class RoverController extends Controller
      */
     public function show(string $id): RoverResource
     {
-        if (! $rover = Rover::find($id)) {
+        if (!$rover = Rover::find($id)) {
             abort(404);
         }
 
         return new RoverResource($rover);
+    }
+
+    /**
+     * @param int $id
+     * @param CommandController $request
+     * @return RoverStateResource
+     * @throws Exception
+     */
+    public function command(int $id, CommandController $request): RoverStateResource
+    {
+        /** @var Rover $rover */
+        $rover = Rover::findOrFail($id);
+
+        $plateau = $rover->plateau();
+
+        // Create a mover instance
+        $mover = new Mover(
+            $rover->getCurrentX(),
+            $rover->getCurrentY(),
+            $rover->getDirection(),
+            $plateau->getMaxX(),
+            $plateau->getMaxY(),
+        );
+
+        // Run the commands
+        $mover->commands(
+            $request->get('commands')
+        );
+
+        // Replace the rover data after command execution
+        $rover->setCurrentX(
+            $mover->getRoverX()
+        );
+
+        $rover->setCurrentY(
+            $mover->getRoverY()
+        );
+
+        $rover->setDirection(
+            $mover->getRoverDirection()
+        );
+
+        // Save the rover state
+        $rover->save();
+
+        return new RoverStateResource($rover);
     }
 }

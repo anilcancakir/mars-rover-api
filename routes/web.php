@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    foreach (str_split('MAFAS', 1) as $char) {
+        dd($char);
+    }
+
     $t = \App\MemoryModels\Plateau::find('Anılcan ın güzel platüsü');
     dd($t);
 

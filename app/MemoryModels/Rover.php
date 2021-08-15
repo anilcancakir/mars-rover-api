@@ -8,9 +8,9 @@ use Exception;
 class Rover extends BaseMemoryModel
 {
     /**
-     * @var string
+     * @var int
      */
-    protected string $plateauId;
+    protected int $plateauId;
 
     /**
      * @var Coordinate
@@ -82,9 +82,9 @@ class Rover extends BaseMemoryModel
     /**
      * Get the rover's plateau id.
      *
-     * @return string
+     * @return int
      */
-    public function getPlateauId(): string
+    public function getPlateauId(): int
     {
         return $this->plateauId;
     }
@@ -103,6 +103,22 @@ class Rover extends BaseMemoryModel
     public function setCurrentCoordinate(Coordinate $currentCoordinate): void
     {
         $this->currentCoordinate = $currentCoordinate;
+    }
+
+    /**
+     * @param int $x
+     */
+    public function setCurrentX(int $x): void
+    {
+        $this->currentCoordinate->setX($x);
+    }
+
+    /**
+     * @param int $y
+     */
+    public function setCurrentY(int $y): void
+    {
+        $this->currentCoordinate->setY($y);
     }
 
     /**

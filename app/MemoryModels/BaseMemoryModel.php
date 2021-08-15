@@ -2,7 +2,6 @@
 
 namespace App\MemoryModels;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Redis;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -54,7 +53,7 @@ abstract class BaseMemoryModel
      * @param string $id
      * @return BaseMemoryModel|null
      */
-    public static function find(string $id): ?BaseMemoryModel
+    public static function find(int $id): ?BaseMemoryModel
     {
         $key = self::getKey($id);
         if ($value = Redis::connection()->client()->get($key)) {
@@ -70,7 +69,7 @@ abstract class BaseMemoryModel
      * @param string $id
      * @return BaseMemoryModel
      */
-    public static function findOrFail(string $id): BaseMemoryModel
+    public static function findOrFail(int $id): BaseMemoryModel
     {
         if (! $model = self::find($id)) {
             throw new NotFoundHttpException(

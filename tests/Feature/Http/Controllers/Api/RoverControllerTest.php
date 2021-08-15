@@ -58,4 +58,27 @@ class RoverControllerTest extends TestCase
             ]
         ]);
     }
+
+    /**
+     * @test
+     * @throws Exception
+     */
+    public function test_can_execute_commands()
+    {
+        $plateauId = random_int(1, 1000);
+        (new Plateau($plateauId, new Coordinate(10, 10)))->save();
+
+        $id = random_int(1, 1000);
+        $rover = new Rover($id, $plateauId, DIRECTION_EAST, new Coordinate(1, 1));
+        $rover->save();
+
+        $this->post("api/rovers/$id/command", [
+            'commands' => 'MLM'
+        ])->assertJsonFragment([
+            'id' => $id,
+            'plateau_id' => $plateauId,
+            'current_x' => 2,
+            'current_y' => 2,
+        ]);
+    }
 }
