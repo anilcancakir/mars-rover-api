@@ -56,6 +56,7 @@ class Rover extends BaseMemoryModel
     {
         /** @var Plateau $plateau */
         $plateau = Plateau::findOrFail($this->plateauId);
+
         return $plateau;
     }
 

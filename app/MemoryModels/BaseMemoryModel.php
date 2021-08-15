@@ -73,12 +73,11 @@ abstract class BaseMemoryModel
     {
         if (! $model = self::find($id)) {
             throw new NotFoundHttpException(
-                get_called_class() . ' not found with ' . $id
+                get_called_class().' not found with '.$id
             );
         }
 
         return $model;
-
     }
 
     /**

@@ -21,10 +21,10 @@ class BaseMemoryModelTest extends TestCase
         $model->save();
 
         $className = class_basename($model);
-        $key = $className . ':' . md5($id);
+        $key = $className.':'.md5($id);
 
         $this->assertTrue(
-            (bool)Redis::connection()->client()->exists($key)
+            (bool) Redis::connection()->client()->exists($key)
         );
     }
 
