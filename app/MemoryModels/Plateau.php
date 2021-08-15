@@ -20,4 +20,24 @@ class Plateau extends BaseMemoryModel
         $this->id = $name;
         $this->maxCoordinate = $maxCoordinate ?: new Coordinate;
     }
+
+    /**
+     * Get the max X value.
+     *
+     * @return int
+     */
+    public function getMaxX(): int
+    {
+        return $this->maxCoordinate->getX();
+    }
+
+    /**
+     * Get the max Y value.
+     *
+     * @return int
+     */
+    public function getMaxY(): int
+    {
+        return $this->maxCoordinate->getY();
+    }
 }
