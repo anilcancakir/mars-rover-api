@@ -31,7 +31,7 @@ class RoverControllerTest extends TestCase
             'data' => [
                 'id',
                 'plateau_id',
-            ]
+            ],
         ]);
     }
 
@@ -55,7 +55,7 @@ class RoverControllerTest extends TestCase
             'data' => [
                 'id',
                 'plateau_id',
-            ]
+            ],
         ]);
     }
 }

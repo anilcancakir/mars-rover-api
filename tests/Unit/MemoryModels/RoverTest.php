@@ -6,7 +6,6 @@ use App\Coordinate;
 use App\MemoryModels\Plateau;
 use App\MemoryModels\Rover;
 use Exception;
-use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class RoverTest extends TestCase

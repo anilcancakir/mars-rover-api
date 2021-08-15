@@ -2,7 +2,6 @@
 
 namespace App\MemoryModels;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Redis;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -74,12 +73,11 @@ abstract class BaseMemoryModel
     {
         if (! $model = self::find($id)) {
             throw new NotFoundHttpException(
-                get_called_class() . ' not found with ' . $id
+                get_called_class().' not found with '.$id
             );
         }
 
         return $model;
-
     }
 
     /**
