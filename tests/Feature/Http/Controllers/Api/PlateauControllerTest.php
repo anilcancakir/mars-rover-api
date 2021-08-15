@@ -31,7 +31,7 @@ class PlateauControllerTest extends TestCase
             'max_coordinate' => [
                 'x' => $maxX,
                 'y' => $maxY,
-            ]
+            ],
         ]);
     }
 }

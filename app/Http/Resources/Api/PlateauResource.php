@@ -28,7 +28,7 @@ class PlateauResource extends JsonResource
             'max_coordinate' => [
                 'x' => $this->getMaxX(),
                 'y' => $this->getMaxY(),
-            ]
+            ],
         ];
     }
 }

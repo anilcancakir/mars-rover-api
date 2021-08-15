@@ -70,7 +70,7 @@ abstract class BaseMemoryModel
      */
     protected static function getKey(string $id): string
     {
-        return basename(get_called_class()) . ':' . md5($id);
+        return basename(get_called_class()).':'.md5($id);
     }
 
     /**
@@ -81,7 +81,7 @@ abstract class BaseMemoryModel
      */
     protected static function serialize(mixed $value): mixed
     {
-        return is_numeric($value) && !in_array($value, [INF, -INF]) && !is_nan($value) ? $value : serialize($value);
+        return is_numeric($value) && ! in_array($value, [INF, -INF]) && ! is_nan($value) ? $value : serialize($value);
     }
 
     /**
