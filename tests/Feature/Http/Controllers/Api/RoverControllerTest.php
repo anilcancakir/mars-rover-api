@@ -22,7 +22,7 @@ class RoverControllerTest extends TestCase
 
         (new Plateau($plateauId, new Coordinate($x, $y)))->save();
 
-        $this->post('api/rovers/create', [
+        $this->post('api/v1/rovers/create', [
             'plateau_id' => $plateauId,
             'direction' => DIRECTION_WEST,
             'x' => $x,
@@ -51,7 +51,7 @@ class RoverControllerTest extends TestCase
         $rover = new Rover($id, $plateauId, DIRECTION_WEST, new Coordinate($x, $y));
         $rover->save();
 
-        $this->get("api/rovers/$id")->assertJsonStructure([
+        $this->get("api/v1/rovers/$id")->assertJsonStructure([
             'data' => [
                 'id',
                 'plateau_id',
@@ -72,7 +72,7 @@ class RoverControllerTest extends TestCase
         $rover = new Rover($id, $plateauId, DIRECTION_EAST, new Coordinate(1, 1));
         $rover->save();
 
-        $this->post("api/rovers/$id/command", [
+        $this->post("api/v1/rovers/$id/command", [
             'commands' => 'MLM',
         ])->assertJsonFragment([
             'id' => $id,

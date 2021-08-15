@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\PlateauController;
-use App\Http\Controllers\Api\RoverController;
-use App\Http\Controllers\Api\RoverStateController;
+use App\Http\Controllers\Api\v1\PlateauController;
+use App\Http\Controllers\Api\v1\RoverController;
+use App\Http\Controllers\Api\v1\RoverStateController;
 use Illuminate\Support\Facades\Route;
 
 /*

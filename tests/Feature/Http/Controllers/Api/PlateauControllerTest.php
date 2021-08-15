@@ -18,7 +18,7 @@ class PlateauControllerTest extends TestCase
         $maxX = random_int(1, 100);
         $maxY = random_int(1, 100);
 
-        $this->post('api/plateaus/create', [
+        $this->post('api/v1/plateaus/create/', [
             'x' => $maxX,
             'y' => $maxY,
         ])->assertJsonFragment([
@@ -46,7 +46,7 @@ class PlateauControllerTest extends TestCase
         $plateau = new Plateau($id, new Coordinate($maxX, $maxY));
         $plateau->save();
 
-        $this->get("api/plateaus/$id")->assertJsonFragment([
+        $this->get("api/v1/plateaus/$id")->assertJsonFragment([
             'id' => $id,
             'min_coordinate' => [
                 'x' => 0,
